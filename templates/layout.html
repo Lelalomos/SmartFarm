@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0/Chart.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0/Chart.js" type="text/javascript"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Smart_Feed</title>
+    {% endif %}
+    <!-- <h1>เครื่องให้อาหารปลาอัจฉริยะ</h1> -->
+
+    <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
+    <link href="favicon.ico" rel="shortcut icon" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS File -->
+    <link
+      href="/static/lib/bootstrap/css/bootstrap.min.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries CSS Files -->
+    <link
+      href="/static/lib/font-awesome/css/font-awesome.min.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/lib/animate-css/animate.min.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+
+    <!-- Main Stylesheet File -->
+    <link href="/static/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+      <div id="preloader"></div>
+      
+        {% with  messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" id = "warning">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}
+      {% endblock %}
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="static/lib/jquery/jquery.min.js"></script>
+    <script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/lib/superfish/hoverIntent.js"></script>
+    <script src="static/lib/superfish/superfish.min.js"></script>
+    <script src="static/lib/morphext/morphext.min.js"></script>
+    <script src="static/lib/wow/wow.min.js"></script>
+    <script src="static/lib/stickyjs/sticky.js"></script>
+    <script src="static/lib/easing/easing.js"></script>
+    <!-- Template Specisifc Custom Javascript File -->
+    <script src="static/js/custom.js"></script>
+
+    <script src="static/contactform/contactform.js"></script>
+   <script>
+        $(document).ready(function(){
+            $("#warning").delay(5000).slideUp(300);
+        });
+    </script>
+  </body>
+</html>
+

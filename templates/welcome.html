@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block content %}
+<section id="services">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12" style="margin-top: 2%;">
+          <h3 class="section-title">SMART FEED PROJECT</h3>
+          <div class="section-title-divider"></div>
+          <p class="section-description">เครื่องให้อาหารปลาอัจฉริยะ</p>
+        </div>
+      </div>
+      <div class="row">
+        <img src="{{start_logo}}" style="display: block;margin-left: auto;margin-right: auto;border-radius: 50%;margin-bottom: 2%;width: 25%;" alt="fish_logo">
+      </div>
+
+      <div class="row">
+      <div class="col-md-12">
+          <h4 class="section-title" style="color: black;" >ขั้นตอนการใช้งานเว็บ</h4>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 2%;" >
+        <div class="col-md-4 service-item">
+          <div class="service-icon"><i class="fa fa-desktop"></i></div>
+          <h4 class="service-title" style="color: black;">1. เข้าสู่เว็บไซต์</h4>
+          <p class="service-description">ขั้นตอนแรกคือ เข้ามายังเว็บไซต์ด้วยลิงค์ 192.168.1.99:6677</p>
+        </div>
+        
+        <div class="col-md-4 service-item">
+            <div class="service-icon"><i class="fa fa-paper-plane"></i></div>
+            <h4 class="service-title" style="color: black;">2. กรอก Token line</h4>
+            <p class="service-description">กรอกข้อมูล Token Line เพื่อให้ระบบส่งข้อความสื่อสารให้กับผู้ใช้และเพื่อให้ปลาสวยงามอยู่กับผู้ใช้ไปนานๆ (ขั้นตอนการรับอยู่ที่หน้ากรอก Token)</p>
+          </div>
+
+          <div class="col-md-4 service-item" >
+              <div class="service-icon"><i class="fa fa-photo"></i></div>
+              <h4 class="service-title" style="color: black;">3. ระบบตรวจจับปลาและชนิดปลาอัตโนมัติ</h4>
+              <p class="service-description">ระบบจะทำการตรวจสอบปลาภายในภาชนะเลี้ยงปลาของผู้ใช้เพื่อนำข้อมูลเหล่านี้ไปวิเคราะห์ปริมาณอาหารที่ให้ปลาในครั้งถัดไป</p>
+            </div>
+
+          <div class="col-md-4 service-item">
+                <div class="service-icon"><i class="fa fa-check-circle"></i></div>
+                <h4 class="service-title" style="color: black;">4. ยืนยันข้อมูล</h4>
+                <p class="service-description">ระบบจะให้ผู้ใช้ยืนยันข้อมูลของระบบที่ตรวจสอบปลาและชนิดปลาของผู้ใช้ว่าข้อมูลมีความถูกต้องหรือไม่</p>
+              </div>
+          
+              <div class="col-md-4 service-item">
+                  <div class="service-icon"><i class="fa fa-bar-chart"></i></div>
+                  <h4 class="service-title" style="color: black;">5. เริ่มการทำงานพร้อมแสดงสถิติ</h4>
+                  <p class="service-description">ระบบจะเข้าสู่หน้าการแสดงสถิติด้วยกราฟว่าการให้อาหารของเครื่องมีผลอย่างไรและระบบจะเปิดการทำงานของเครื่องให้อาหารปลา</p>
+                </div>
+
+                <div class="col-md-4 service-item">
+                    <div class="service-icon"><i class="fa fa-circle-o"></i></div>
+                    <h4 class="service-title" style="color: black;">6. สถานะของระบบ</h4>
+                    <p class="service-description">ผู้ใช้สามารถดูสถานะของระบบได้จากหน้า แสดงสถิติ(machine_work) โดยถ้าสถานะเป็นสีแดงหมายถึงระบบมีปัญหา แต่ถ้าเป็นสีเขียวหมายถึงระบบปกติ และเมื่อระบบพบว่ามีปัญหาระบบจะแจ้งข้อความไปหาผู้ใช้</p>
+                  </div>
+      </div>
+      
+      {% if check_setting == true %}
+      <div class="row">
+      <div class="col-md-12">
+        <form method="POST" action="{{url_for('index')}}">
+            <button class="btn_outline success btn_start" type="submit" name= "start" value ="submit">เริ่มต้นใช้งาน</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="text-align: center;margin-bottom: 2%;font-size: 126%;">
+            <a href="{{url_for('setting_page')}}">หน้าตั้งค่า</button>
+      </div>
+    </div>
+      {% else %}
+      <div class="col-md-12">
+        <form method="POST" action="{{url_for('setting_page')}}">
+            <button class="btn_outline success btn_start" type="submit" name= "start" value ="submit">เริ่มต้นใช้งาน</button>
+        </form>
+      </div>
+      {% endif %}
+    
+    </div>
+
+  </section>
+{% endblock %}

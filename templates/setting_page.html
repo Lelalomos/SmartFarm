@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+{% block content %}
+<section id="hero">
+    <div class="hero-container">
+        <div class="wow fadeIn">
+            <h2>กรอกข้อมูล Token Line </h2>
+            <div class="form-group">
+                <form method="POST" action="{{url_for('setting_page')}}">
+                            <input type="text" name="line_txt" class="form-control" id="line_txt" placeholder="Token Line" style="width: 50%;padding:2%;margin:0 auto;display:block;margin-bottom:2%;"/>
+                            <button class="btn btn-success" type="submit" name= "submit_line" data-backdrop="static" data-keyboard="false" data-target="#setting_show" data-toggle="modal" value ="submit">ยืนยันข้อมูล</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="section-title">ขั้นตอนการรับ Token Line</h3>
+          <div class="section-title-divider"></div>
+          <p class="section-description">การขอรับ Token Line เพื่อที่จะให้ระบบสามารถที่จะสื่อสารกับตัวผู้ใช้ได้โดยตรงเมื่อมีการแจ้งเตือนต่างๆ โดยทางระบบจะอธิบายไปทีละขั้นตอนเพื่อที่จะได้ง่ายต่อความเข้าใจของผู้ใช้ระบบ</p>
+        </div>
+      </div>
+    </div>
+    <div class="container about-container wow fadeInUp">
+      <div class="row" style="margin-bottom: 2%;">
+        <div class="col-lg-6 about-img">
+          <img src="{{token_line1}}" alt="เข้าเว็บ Line">
+        </div>
+
+        <div class="col-md-6 about-content">
+          <h2 class="about-title">เข้าเว็บ Line</h2>
+          <p class="about-text">
+              ขั้นตอนแรกคือการเข้าไปยังเว็บ Notify Line เป็นเว็บที่ใช้ในการขอ Token Line <a href="https://notify-bot.line.me/en/">คลิกเพื่อเข้าสู่เว็บ Notify Line</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 2%;">
+        <div class="col-lg-6 about-img">
+          <img src="{{token_line2}}" alt="เข้าสู่บัญชี Line ของผู้ใช้">
+        </div>
+
+        <div class="col-md-6 about-content">
+          <h2 class="about-title">เข้าสู่บัญชี Line ของผู้ใช้</h2>
+          <p class="about-text">
+              ขั้นตอนที่สอง จะเป็นการเข้าสู่บัญชีของผู้ใช้งานเพื่อขอรับ Token Line โดยจะกรอก username และ password เพื่อเข้าสู้ระบบ
+          </p>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 2%;">
+        <div class="col-lg-6 about-img">
+          <img src="{{token_line3}}" alt="หน้าของฉัน">
+        </div>
+
+        <div class="col-md-6 about-content">
+          <h2 class="about-title">เข้าไปที่ หน้าของฉัน หรือ My page</h2>
+          <p class="about-text">
+              ขั้นตอนที่สาม เป็นการเข้าไปที่หน้าที่ชื่อว่า "หน้าของฉัน" เมื่อใช้ภาษาไทย ถ้าเป็นภาษาอังกฤษจะมีคำว่า "My page" เมนูจะแสดงเมื่อคลิกที่ชื่อบัญชีของตัวเองมุมขวาบนของจอภาพ
+          </p>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 2%;">
+        <div class="col-lg-6 about-img">
+          <img src="{{token_line4}}" alt="คลิก">
+        </div>
+
+        <div class="col-md-6 about-content">
+          <h2 class="about-title">คลิก ออก Token หรือ Generate Token</h2>
+          <p class="about-text">
+              ขั้นตอนที่สี่ เมื่อเข้ามาที่หน้า "หน้าของฉัน" หรือ My page แล้วให้เลื่อนหน้าเว็บลงมาจะพบกับปุ่ม "ออก Token" หรือถ้าเป็นภาษาอังกฤษจะใช้คำว่า "Generate Token" ให้คลิกเข้าไป
+          </p>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 2%;">
+        <div class="col-lg-6 about-img">
+          <img src="{{token_line5}}" alt="หน้าต่าง Token">
+        </div>
+
+        <div class="col-md-6 about-content">
+          <h2 class="about-title">หน้าต่าง ออก Token หรือ Generate Token</h2>
+          <p class="about-text">
+              ขั้นตอนที่ห้า เมื่อทำการคลิกปุ่ม "Generate Token" หรือ "ออก Token" แล้วจะเห็นหน้า "Generate Token" หรือถ้าใช้ภาษาไทยเป็น "ออก Token" ขึ้นมา
+              เมื่อมองจากบนลงล่างจะเห็นช่องที่ให้ใส่ชื่อที่เราต้องการที่จะให้มันแสดงเป็นชื่อเมื่อระบบแจ้งเตือน โดยในที่นี้จะใช้คำว่า Smart Feed และเมื่อมองจากช่องใส่ชื่อให้ระบบลงมาอีก
+              จะเจอกับการเลือกบัญชีที่ต้องการให้ระบบส่งแจ้งเตือนให้โดย Notify Line จะออก Token Line ให้แค่กลุ่มและบัญชีของผู้ใช้เท่านั้น เมื่อเลือกเสร็จสิ้นให้ผู้ใช้ทำการคลิกที่ปุ่ม "ออก Token"
+              หรือ "Generate Token" ได้เลย
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 about-img">
+          <img src="{{token_line6}}" alt="Token Line">
+        </div>
+
+        <div class="col-md-6 about-content">
+          <h2 class="about-title">Token Line</h2>
+          <p class="about-text">
+              ขั้นตอนสุดท้าย เมื่อทำตามขั้นตอนจากทางด้านบนลงมาครบแล้ว ขั้นตอนนี้ผู้ใช้ก็จะได้ Token Line แล้วและสามารถนำ Token Line ใส่ช่อง Token Line ทางเว็บของระบบ
+              โดยสามารถกดปุ่มลูกศรชี้ขึ้นเพื่อพาผู้ใช้ไปใส่หรือสามารถเลื่อนเมาส์ขึ้นไปใส่ก็ได้เช่นกัน
+          </p>
+        </div>
+      </div>
+      
+    </div>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  </section>
+
+  <!-- Modal -->
+<div class="modal fade" id="setting_show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><h3>แจ้งเตือนจากระบบ</h3></h5>
+            </div>
+            <div class="modal-body">
+                    <img src="{{clf}}" style="width: 50%;display: block;margin-left: auto;margin-right: auto;" alt="classification">
+                    <h3 style="text-align: center;">เข้าสู่กระบวนการตรวจจับอัตโนมัติ</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section id="contact" style="background: white;">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">กรอกข้อมูลการให้อาหารปลา</h3>
+                <div class="section-title-divider"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-md-push-1">
+                <div class="info">
+                    <div class="pic"><img style="width: 100%;" src="{{image_fish}}"
+                            alt="take photo"></div>
+                </div>
+            </div>
+
+            <div class="col-md-5 col-md-push-2">
+                <div class="form">
+                    <form method="POST" action="{{url_for('machine_work')}}">
+                        <fieldset class="form-group">
+
+                            <div class="form-group">
+                                <select name="fish" class="form-control">
+                                    <option value="{{id_fish}}" selected>{{name_fish}}</option>
+                                    {% for fishes in fish %}
+                                    <option value="{{fishes.id}}">{{fishes.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-group">
+                            <h3>จำนวนปลา : </h3><input type="number" name="num" class="form-control" id="num"
+                                placeholder="จำนวนปลา" Required data-msg="กรุณาใส่จำนวนปลา" value="{{num}}" />
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>ความยาวของปลา/cm : </h3><input type="number" step=0.01 name="width" class="form-control"
+                                id="width" placeholder="ความยาวของปลา/นิ้ว" Required
+                                data-msg="กรุณาใส่ความยาวของปลา/นิ้ว" value="{{x_img}}" />
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>ความกว้างของปลา/cm : </h3><input type="number" step=0.01 name="height"
+                                class="form-control" id="height" placeholder="ความกว้างของปลา/นิ้ว" Required
+                                data-msg="กรุณาใส่ความกว้างของปลา/นิ้ว" value="{{y_img}}" />
+                            <div class="validation"></div>
+                        </div>
+
+
+
+                        <div class="text-center"><button type="submit" name= "submit_fishdetection" data-target="#index_show" data-toggle="modal" data-backdrop="static" data-keyboard="false" value ="submit">ยืนยันข้อมูล</button></div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+ <!-- Modal -->
+<div class="modal fade" id="index_show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือนจากระบบ</h5>
+            </div>
+            <div class="modal-body">
+                    <img src="{{image_machine}}" style="width: 50%;display: block;margin-left: auto;margin-right: auto;" alt="machine process">
+                    <h3 style="text-align: center;">เครื่อง SMART FEED เริ่มทำงาน</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

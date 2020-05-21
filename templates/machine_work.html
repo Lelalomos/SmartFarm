@@ -1,0 +1,386 @@
+{% extends "layout.html" %}
+{% block content %}
+<section id="portfolio">
+  <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">กราฟแสดงสถิติการให้อาหารปลาของเครื่อง Smart Feed</h3>
+        <div class="section-title-divider"></div>
+      </div>
+    </div>
+    <button class="btn_outline success btn_start notification" type="button" data-toggle="modal" data-target="#warning"><span>แจ้งเตือนสถานะของระบบ</span><span class="badge">{{len_list_war}}</span></button>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="details">
+          <canvas id="ph_chart" width="100%" height="100%"></canvas>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="details">
+          <canvas id="temp_chart" width="100%" height="100%"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="details">
+          <canvas id="light_chart" width="100%" height="100%"></canvas>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="details">
+          <canvas id="done_chart" width="100%" height="100%"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">ความรู้เกี่ยวกับสภาพแวดล้อมของปลา</h3>
+        <div class="section-title-divider"></div>
+        <p class="section-description">ความรู้เบื้องต้นสำหรับคนที่เลี้ยงปลาสวยงามที่ไม่ควรปล่อยละเลย</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="profile">
+          <div class="pic"><img src="{{machine_talk}}" alt="machine_talk_img"></div>
+          <h4>Lelalomos</h4>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="quote">
+          <b><img src="{{left}}"></b> อุณหภูมิของน้ำที่เหมาะสำหรับการเลี้ยงปลาคือ 25 ถึง 32 องศาเซลเซียส <small><img src="{{right}}" alt=""></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-9">
+        <div class="quote">
+          <b><img src="{{left}}"></b> ค่า PH หรือที่เรียกกันว่า ค่าบอกความเป็นกรดเป็นด่างของน้ำที่เลี้ยงปลาควรอยู่ที่ 6.5 ถึง 9 <small><img src="{{right}}" alt=""></small>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="profile">
+          <div class="pic"><img src="{{machine_talk}}" alt="machine_talk_img"></div>
+          <h4>Lelalomos</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="profile">
+          <div class="pic"><img src="{{machine_talk}}" alt="machine_talk_img"></div>
+          <h4>Lelalomos</h4>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="quote">
+          <b><img src="{{left}}"></b> การเปลี่ยนน้ำปลาทุกครั้งควรใส่เกลือเม็ดที่ไม่มีไอโอดีนผสมทุกครั้งเพื่อฆ่าเชื้อโรคในน้ำบางตัว <small><img src="{{right}}" alt=""></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-9">
+        <div class="quote">
+          <b><img src="{{left}}"></b> ปลาควรกินอาหารหมดภายใน 15 นาทีหลังการให้อาหารถ้าเกินเวลาแล้วอาหารยังไม่หมดควรลดอาหารที่ให้ เนื่องจากมันจะทำให้น้ำเสียแล้วยังทำให้ปลาเป็นโรคอาหารไม่ย่อยอีกด้วย <small><img src="{{right}}" alt=""></small>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="profile">
+          <div class="pic"><img src="{{machine_talk}}" alt="machine_talk_img"></div>
+          <h4>Lelalomos</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="profile">
+          <div class="pic"><img src="{{machine_talk}}" alt="machine_talk_img"></div>
+          <h4>Lelalomos</h4>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="quote">
+          <b><img src="{{left}}"></b> หลังการเปลี่ยนน้ำปลาไม่ควรให้อาหารปลาเพราะในช่วงปล่อยปลานั้น ตัวปลาจะปรับอุณหภูมิของตัวเอง <small><img src="{{right}}" alt=""></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="warning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ข้อความการแจ้งเตือน</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {% if len_list_war > 0 %}
+                          {% for value in list_war %}
+                          <p>   {{value}}</p> 
+                            {% endfor %}
+                          {% else %}
+                           ไม่พบการแจ้งเตือน
+                          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ph
+  var chartDataPH = {
+    labels: [{% for item in date %}
+  "{{item}}",
+    {% endfor %}],
+  datasets: [{
+    label: 'ความเป็นกรด-ด่าง',
+    fill: true,
+    lineTension: 0.1,
+    backgroundColor: "rgba(0, 204, 102,0.4)",
+    borderColor: "rgba(0, 204, 102,1)",
+    borderCapStyle: 'butt',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'miter',
+    pointBorderColor: "rgba(75,192,192,1)",
+    pointBackgroundColor: "#fff",
+    pointBorderWidth: 1,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+    pointHoverBorderColor: "rgba(220,220,220,1)",
+    pointHoverBorderWidth: 2,
+    pointRadius: 1,
+    pointHitRadius: 10,
+    data: [{% for item in ph %}
+                {{ item }},
+  {% endfor %}],
+    spanGaps: false
+  }]
+}
+
+  optionsPH = {
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'PH'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'วัน-เดือน-ปี'
+        }
+      }]
+    }
+  }
+
+  // get chart canvas
+  var cph = document.getElementById("ph_chart").getContext("2d");
+
+  // create the chart using the chart canvas
+  var ph_chart = new Chart(cph, {
+    type: 'line',
+    data: chartDataPH,
+    options: optionsPH
+  });
+
+
+  // temp
+
+  var chartDataTemp = {
+    labels: [{% for item in date %}
+  "{{item}}",
+    {% endfor %}],
+  datasets: [{
+    label: 'อุณหภูมิ',
+    fill: true,
+    lineTension: 0.1,
+    backgroundColor: "rgba(0, 102, 204,0.4)",
+    borderColor: "rgba(0, 102, 204,1)",
+    borderCapStyle: 'butt',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'miter',
+    pointBorderColor: "rgba(75,192,192,1)",
+    pointBackgroundColor: "#fff",
+    pointBorderWidth: 1,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+    pointHoverBorderColor: "rgba(220,220,220,1)",
+    pointHoverBorderWidth: 2,
+    pointRadius: 1,
+    pointHitRadius: 10,
+    data: [{% for item in temp %}
+                {{ item }},
+  {% endfor %}],
+    spanGaps: false
+  }]
+}
+
+  optionsTemp = {
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'อุณหภูมิ (องศาเซลเซียส)'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'วัน-เดือน-ปี'
+        }
+      }]
+    }
+  }
+
+  // get chart canvas
+  var ctemp = document.getElementById("temp_chart").getContext("2d");
+
+  // create the chart using the chart canvas
+  var temp_chart = new Chart(ctemp, {
+    type: 'line',
+    data: chartDataTemp,
+    options: optionsTemp
+  });
+
+
+  //light
+
+  var chartDataLight = {
+    labels: [{% for item in date %}
+  "{{item}}",
+    {% endfor %}],
+  datasets: [{
+    label: 'ความเข้มแสง',
+    fill: true,
+    lineTension: 0.1,
+    backgroundColor: "rgba(255, 102, 0,0.4)",
+    borderColor: "rgba(255, 102, 0,1)",
+    borderCapStyle: 'butt',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'miter',
+    pointBorderColor: "rgba(75,192,192,1)",
+    pointBackgroundColor: "#fff",
+    pointBorderWidth: 1,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+    pointHoverBorderColor: "rgba(220,220,220,1)",
+    pointHoverBorderWidth: 2,
+    pointRadius: 1,
+    pointHitRadius: 10,
+    data: [{% for item in light %}
+                {{ item }},
+  {% endfor %}],
+    spanGaps: false
+  }]
+}
+
+  optionsLight = {
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'ความเข้มของแสง (Lux)'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'วัน-เดือน-ปี'
+        }
+      }]
+    }
+  }
+
+  // get chart canvas
+  var clight = document.getElementById("light_chart").getContext("2d");
+
+  // create the chart using the chart canvas
+  var light_chart = new Chart(clight, {
+    type: 'line',
+    data: chartDataLight,
+    options: optionsLight
+  });
+
+  //done
+
+  var chartDataDone = {
+    labels: [{% for item in date %}
+  "{{item}}",
+    {% endfor %}],
+  datasets: [{
+    label: 'ปริมาณอาหารที่ให้',
+    fill: true,
+    lineTension: 0.1,
+    backgroundColor: "rgba(204, 51, 255,0.4)",
+    borderColor: "rgba(204, 51, 255,1)",
+    borderCapStyle: 'butt',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'miter',
+    pointBorderColor: "rgba(75,192,192,1)",
+    pointBackgroundColor: "#fff",
+    pointBorderWidth: 1,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+    pointHoverBorderColor: "rgba(220,220,220,1)",
+    pointHoverBorderWidth: 2,
+    pointRadius: 1,
+    pointHitRadius: 10,
+    data: [{% for item in done %}
+                {{ item }},
+  {% endfor %}],
+    spanGaps: false
+  }]
+}
+
+  optionsDone = {
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'ปริมาณอาหาร (กรัม)'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'วัน-เดือน-ปี'
+        }
+      }]
+    }
+  }
+
+  // get chart canvas
+  var cdone = document.getElementById("done_chart").getContext("2d");
+
+  // create the chart using the chart canvas
+  var done_chart = new Chart(cdone, {
+    type: 'line',
+    data: chartDataDone,
+    options: optionsDone
+  });
+
+</script>
+
+{% endblock %}
