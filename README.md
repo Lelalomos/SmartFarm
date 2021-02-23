@@ -1,10 +1,10 @@
-#Smart Feed 
+# Smart Feed 
 
-i'm create system for raise fish without control by used IoT and artificial intelligence technique instead 
-my project is AI + IoT 
-link: https://drive.google.com/open?id=1ZiQ9WKV_DK38XznUBuB0ktiTKGSRO_7O
+I'm created system for raise fish without control used IoT and artificial intelligence technique instead 
+This project is AI + IoT 
+Link video: https://drive.google.com/open?id=1ZiQ9WKV_DK38XznUBuB0ktiTKGSRO_7O
 
-this project use tools : 
+# This project used tools : 
 - tensorflow object detection api 
 - python
 - XGBoots
